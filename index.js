@@ -71,7 +71,8 @@ app.use((err, req, res, next) => {
     res.status(500).json({ type: 'error', message: err.message });
 });
 
-const PORT = 3000;
+// first look for env variable
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('listening on', PORT)
 });

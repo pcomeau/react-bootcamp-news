@@ -6,7 +6,11 @@ class App extends Component {
   state = { stories: [] };
 
   componentDidMount() {
-    fetch('http://localhost:3000/topStories')
+    // replace the hardcoded fetch so that server can be run on
+    // any/arbitrary port
+    //fetch('http://localhost:3000/topStories')
+    console.log('document.location.origin', document.location.origin);
+    fetch(`${document.location.origin}/topStories`)
       .then(response => response.json())
       .then(json => this.setState({ stories: json }))
       .catch(error => alert(error.message));
